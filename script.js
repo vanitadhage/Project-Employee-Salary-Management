@@ -1,4 +1,5 @@
 const employees = [
+
   {
     id: "EMP001",
     name: "Rahul Sharma",
@@ -14,9 +15,13 @@ const employees = [
     salary: "₹60,000",
     status: "Pending"
   }
+
 ];
 
 const table = document.getElementById("employeeTable");
+
+
+// Display Employees
 
 function displayEmployees() {
 
@@ -29,18 +34,21 @@ function displayEmployees() {
     row.innerHTML = `
 
       <td>${employee.id}</td>
+
       <td>${employee.name}</td>
+
       <td>${employee.department}</td>
+
       <td>${employee.salary}</td>
 
       <td>
-        <span class="status ${employee.status.toLowerCase()}">
+        <span class="${employee.status === 'Active' ? 'active' : 'pending'} status">
           ${employee.status}
         </span>
       </td>
 
       <td>
-        <button onclick="deleteEmployee(${index})">
+        <button class="delete-btn" onclick="deleteEmployee(${index})">
           Delete
         </button>
       </td>
@@ -58,36 +66,44 @@ displayEmployees();
 
 // Add Employee
 
-const addBtn = document.querySelector(".table-header button");
+const addBtn = document.getElementById("addEmployeeBtn");
 
 addBtn.addEventListener("click", () => {
 
   const name = prompt("Enter Employee Name");
 
+  if (!name) return;
+
   const department = prompt("Enter Department");
+
+  if (!department) return;
 
   const salary = prompt("Enter Salary");
 
-  if(name && department && salary){
+  if (!salary) return;
 
-    employees.push({
-      id: "EMP00" + (employees.length + 1),
-      name,
-      department,
-      salary,
-      status: "Active"
-    });
+  employees.push({
 
-    displayEmployees();
+    id: "EMP00" + (employees.length + 1),
 
-  }
+    name: name,
+
+    department: department,
+
+    salary: salary,
+
+    status: "Active"
+
+  });
+
+  displayEmployees();
 
 });
 
 
 // Delete Employee
 
-function deleteEmployee(index){
+function deleteEmployee(index) {
 
   employees.splice(index, 1);
 

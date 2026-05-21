@@ -1,13 +1,3 @@
-if(
-  sessionStorage.getItem("loggedIn")
-  !== "true"
-){
-
-  window.location.href = "login.html";
-
-}
-
-
 const contentArea = document.getElementById("contentArea");
 
 
@@ -54,13 +44,36 @@ function showDashboard() {
     <div class="header">
 
       <div>
+
         <h1>Dashboard</h1>
+
         <p>Welcome Back Admin</p>
+
       </div>
 
-      <input
-        type="text"
-        placeholder="Search Employee">
+      <div>
+
+        <input
+          type="text"
+          placeholder="Search Employee">
+
+        <button
+          onclick="logout()"
+          style="
+            padding:12px 18px;
+            background:red;
+            color:white;
+            border:none;
+            border-radius:10px;
+            margin-left:10px;
+            cursor:pointer;
+          ">
+
+          Logout
+
+        </button>
+
+      </div>
 
     </div>
 
@@ -93,8 +106,6 @@ function showDashboard() {
 }
 
 showDashboard();
-
-
 // ================= EMPLOYEES =================
 
 function showEmployees() {
@@ -530,5 +541,12 @@ function showSettings() {
     </div>
 
   `;
+
+}
+function logout(){
+
+  sessionStorage.removeItem("loggedIn");
+
+  window.location.href = "login.html";
 
 }

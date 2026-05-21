@@ -1,3 +1,13 @@
+if (
+  sessionStorage.getItem("loggedIn")
+  !== "true"
+) {
+
+  window.location.href = "login.html";
+
+}
+
+
 const contentArea = document.getElementById("contentArea");
 
 

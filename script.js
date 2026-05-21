@@ -1,6 +1,40 @@
 const contentArea = document.getElementById("contentArea");
 
 
+// ================= LOCAL STORAGE =================
+
+let employees = JSON.parse(
+  localStorage.getItem("employees")
+) || [
+
+  {
+    id: "EMP001",
+    name: "Rahul Sharma",
+    department: "IT",
+    salary: "₹55,000",
+    status: "Active"
+  },
+
+  {
+    id: "EMP002",
+    name: "Sneha Patil",
+    department: "HR",
+    salary: "₹60,000",
+    status: "Pending"
+  }
+
+];
+
+function saveEmployees() {
+
+  localStorage.setItem(
+    "employees",
+    JSON.stringify(employees)
+  );
+
+}
+
+
 // ================= DASHBOARD =================
 
 function showDashboard() {
@@ -14,7 +48,9 @@ function showDashboard() {
         <p>Welcome Back Admin</p>
       </div>
 
-      <input type="text" placeholder="Search Employee">
+      <input
+        type="text"
+        placeholder="Search Employee">
 
     </div>
 
@@ -22,7 +58,7 @@ function showDashboard() {
 
       <div class="card">
         <h3>Total Employees</h3>
-        <h1>120</h1>
+        <h1>${employees.length}</h1>
       </div>
 
       <div class="card">
@@ -51,24 +87,6 @@ showDashboard();
 
 // ================= EMPLOYEES =================
 
-const employees = [
-
-  {
-    id: "EMP001",
-    name: "Rahul Sharma",
-    department: "IT",
-    salary: "₹55,000"
-  },
-
-  {
-    id: "EMP002",
-    name: "Sneha Patil",
-    department: "HR",
-    salary: "₹60,000"
-  }
-
-];
-
 function showEmployees() {
 
   contentArea.innerHTML = `
@@ -79,9 +97,20 @@ function showEmployees() {
 
         <h2>Employees</h2>
 
-        <button onclick="addEmployee()">
-          Add Employee
-        </button>
+        <div>
+
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search Employee"
+            class="settings-input"
+            onkeyup="searchEmployee()">
+
+          <button onclick="addEmployee()">
+            Add Employee
+          </button>
+
+        </div>
 
       </div>
 
@@ -90,11 +119,14 @@ function showEmployees() {
         <thead>
 
           <tr>
+
             <th>ID</th>
             <th>Name</th>
             <th>Department</th>
             <th>Salary</th>
+            <th>Status</th>
             <th>Action</th>
+
           </tr>
 
         </thead>
@@ -109,17 +141,20 @@ function showEmployees() {
 
   `;
 
-  displayEmployees();
+  displayEmployees(employees);
 
 }
 
-function displayEmployees() {
+
+// ================= DISPLAY EMPLOYEES =================
+
+function displayEmployees(data) {
 
   const table = document.getElementById("employeeTable");
 
   table.innerHTML = "";
 
-  employees.forEach((employee, index) => {
+  data.forEach((employee, index) => {
 
     table.innerHTML += `
 
@@ -135,14 +170,29 @@ function displayEmployees() {
 
         <td>
 
-          <button class="edit-btn"
+          <span class="
+            status
+            ${employee.status.toLowerCase()}
+          ">
+
+            ${employee.status}
+
+          </span>
+
+        </td>
+
+        <td>
+
+          <button
+            class="edit-btn"
             onclick="editEmployee(${index})">
 
             Edit
 
           </button>
 
-          <button class="delete-btn"
+          <button
+            class="delete-btn"
             onclick="deleteEmployee(${index})">
 
             Delete
@@ -159,33 +209,122 @@ function displayEmployees() {
 
 }
 
+
+// ================= ADD EMPLOYEE =================
+
 function addEmployee() {
 
-  const name = prompt("Enter Name");
+  const name = prompt("Enter Employee Name");
+
+  if (!name) return;
 
   const department = prompt("Enter Department");
 
+  if (!department) return;
+
   const salary = prompt("Enter Salary");
+
+  if (!salary) return;
 
   employees.push({
 
     id: "EMP00" + (employees.length + 1),
 
-    name,
-    department,
-    salary
+    name: name,
+
+    department: department,
+
+    salary: salary,
+
+    status: "Active"
 
   });
 
-  displayEmployees();
+  saveEmployees();
+
+  showEmployees();
 
 }
+
+
+// ================= DELETE EMPLOYEE =================
 
 function deleteEmployee(index) {
 
   employees.splice(index, 1);
 
-  displayEmployees();
+  saveEmployees();
+
+  showEmployees();
+
+}
+
+
+// ================= EDIT EMPLOYEE =================
+
+function editEmployee(index) {
+
+  const employee = employees[index];
+
+  const newName = prompt(
+    "Edit Name",
+    employee.name
+  );
+
+  if (!newName) return;
+
+  const newDepartment = prompt(
+    "Edit Department",
+    employee.department
+  );
+
+  if (!newDepartment) return;
+
+  const newSalary = prompt(
+    "Edit Salary",
+    employee.salary
+  );
+
+  if (!newSalary) return;
+
+  employees[index] = {
+
+    ...employee,
+
+    name: newName,
+
+    department: newDepartment,
+
+    salary: newSalary
+
+  };
+
+  saveEmployees();
+
+  showEmployees();
+
+}
+
+
+// ================= SEARCH EMPLOYEE =================
+
+function searchEmployee() {
+
+  const searchValue =
+    document.getElementById("searchInput")
+    .value
+    .toLowerCase();
+
+  const filteredEmployees =
+    employees.filter(employee =>
+
+      employee.name
+      .toLowerCase()
+      .includes(searchValue)
+
+    );
+
+  displayEmployees(filteredEmployees);
 
 }
 
@@ -196,7 +335,9 @@ function showPayroll() {
 
   contentArea.innerHTML = `
 
-    <h1>Payroll Management</h1>
+    <h1 style="margin-bottom:20px;">
+      Payroll Management
+    </h1>
 
     <div class="cards">
 
@@ -228,7 +369,9 @@ function showAttendance() {
 
   contentArea.innerHTML = `
 
-    <h1>Attendance Module</h1>
+    <h1 style="margin-bottom:20px;">
+      Attendance Module
+    </h1>
 
     <div class="cards">
 
@@ -260,7 +403,9 @@ function showLeaves() {
 
   contentArea.innerHTML = `
 
-    <h1>Leave Management</h1>
+    <h1 style="margin-bottom:20px;">
+      Leave Management
+    </h1>
 
     <div class="table-section">
 
@@ -269,9 +414,11 @@ function showLeaves() {
         <thead>
 
           <tr>
+
             <th>Name</th>
             <th>Leave Type</th>
             <th>Status</th>
+
           </tr>
 
         </thead>
@@ -307,7 +454,9 @@ function showReports() {
 
   contentArea.innerHTML = `
 
-    <h1>Reports</h1>
+    <h1 style="margin-bottom:20px;">
+      Reports
+    </h1>
 
     <div class="cards">
 
@@ -334,7 +483,9 @@ function showSettings() {
 
   contentArea.innerHTML = `
 
-    <h1>Settings</h1>
+    <h1 style="margin-bottom:20px;">
+      Settings
+    </h1>
 
     <div class="table-section">
 
@@ -343,11 +494,13 @@ function showSettings() {
       <br>
 
       <label>Company Name</label>
+
       <br><br>
 
-      <input type="text"
+      <input
+        type="text"
         value="PayManage Pvt Ltd"
-        style="padding:10px;width:300px;">
+        class="settings-input">
 
       <br><br>
 
@@ -357,8 +510,11 @@ function showSettings() {
         border:none;
         padding:12px 20px;
         border-radius:10px;
+        cursor:pointer;
       ">
+
         Save Settings
+
       </button>
 
     </div>

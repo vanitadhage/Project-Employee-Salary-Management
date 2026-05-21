@@ -537,9 +537,35 @@ function generatePayslip() {
       <hr style="margin:20px 0;">
 
       <h2>
-        Net Salary:
-        ₹${netSalary}
-      </h2>
+  Net Salary:
+  ₹${netSalary}
+</h2>
+
+<br>
+
+<button
+  onclick="
+    downloadPDF(
+      '${name}',
+      '${basicSalary}',
+      '${hra}',
+      '${bonus}',
+      '${deduction}',
+      '${netSalary}'
+    )
+  "
+  style="
+    background:#4338ca;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+  ">
+
+  Download PDF
+
+</button>
 
     </div>
 

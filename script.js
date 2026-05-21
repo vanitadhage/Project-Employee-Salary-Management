@@ -51,29 +51,21 @@ function showDashboard() {
 
       </div>
 
-      <div>
+     <div class="top-actions">
 
-        <input
-          type="text"
-          placeholder="Search Employee">
+  <input
+    type="text"
+    placeholder="Search Employee">
 
-        <button
-          onclick="logout()"
-          style="
-            padding:12px 18px;
-            background:red;
-            color:white;
-            border:none;
-            border-radius:10px;
-            margin-left:10px;
-            cursor:pointer;
-          ">
+  <button
+    class="logout-btn"
+    onclick="logout()">
 
-          Logout
+    Logout
 
-        </button>
+  </button>
 
-      </div>
+</div>
 
     </div>
 

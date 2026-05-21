@@ -247,5 +247,23 @@ table td{
   .header input{
     width:100%;
   }
+  .top-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logout-btn{
+  padding:12px 18px;
+  background:red;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.logout-btn:hover{
+  background:darkred;
+}
 
 }

@@ -13,46 +13,84 @@ const employees = [
     department: "HR",
     salary: "₹60,000",
     status: "Pending"
-  },
-
-  {
-    id: "EMP003",
-    name: "Amit Verma",
-    department: "Finance",
-    salary: "₹48,000",
-    status: "Active"
-  },
-
-  {
-    id: "EMP004",
-    name: "Priya Singh",
-    department: "Marketing",
-    salary: "₹52,000",
-    status: "Active"
   }
 ];
 
 const table = document.getElementById("employeeTable");
 
-employees.forEach(employee => {
+function displayEmployees() {
 
-  const row = document.createElement("tr");
+  table.innerHTML = "";
 
-  row.innerHTML = `
-  
-    <td>${employee.id}</td>
-    <td>${employee.name}</td>
-    <td>${employee.department}</td>
-    <td>${employee.salary}</td>
+  employees.forEach((employee, index) => {
 
-    <td>
-      <span class="status ${employee.status.toLowerCase()}">
-        ${employee.status}
-      </span>
-    </td>
-  
-  `;
+    const row = document.createElement("tr");
 
-  table.appendChild(row);
+    row.innerHTML = `
+
+      <td>${employee.id}</td>
+      <td>${employee.name}</td>
+      <td>${employee.department}</td>
+      <td>${employee.salary}</td>
+
+      <td>
+        <span class="status ${employee.status.toLowerCase()}">
+          ${employee.status}
+        </span>
+      </td>
+
+      <td>
+        <button onclick="deleteEmployee(${index})">
+          Delete
+        </button>
+      </td>
+
+    `;
+
+    table.appendChild(row);
+
+  });
+
+}
+
+displayEmployees();
+
+
+// Add Employee
+
+const addBtn = document.querySelector(".table-header button");
+
+addBtn.addEventListener("click", () => {
+
+  const name = prompt("Enter Employee Name");
+
+  const department = prompt("Enter Department");
+
+  const salary = prompt("Enter Salary");
+
+  if(name && department && salary){
+
+    employees.push({
+      id: "EMP00" + (employees.length + 1),
+      name,
+      department,
+      salary,
+      status: "Active"
+    });
+
+    displayEmployees();
+
+  }
 
 });
+
+
+// Delete Employee
+
+function deleteEmployee(index){
+
+  employees.splice(index, 1);
+
+  displayEmployees();
+
+}

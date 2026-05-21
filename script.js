@@ -130,10 +130,17 @@ function showDashboard() {
 }
 function loadCharts() {
 
-  const employeeChart =
+  const employeeCanvas =
     document.getElementById("employeeChart");
 
-  new Chart(employeeChart, {
+  const salaryCanvas =
+    document.getElementById("salaryChart");
+
+  if (!employeeCanvas || !salaryCanvas) {
+    return;
+  }
+
+  new Chart(employeeCanvas, {
 
     type: "bar",
 
@@ -165,14 +172,19 @@ function loadCharts() {
 
       }]
 
+    },
+
+    options: {
+
+      responsive: true,
+
+      maintainAspectRatio: false
+
     }
 
   });
 
-  const salaryChart =
-    document.getElementById("salaryChart");
-
-  new Chart(salaryChart, {
+  new Chart(salaryCanvas, {
 
     type: "doughnut",
 
@@ -199,6 +211,14 @@ function loadCharts() {
         ]
 
       }]
+
+    },
+
+    options: {
+
+      responsive: true,
+
+      maintainAspectRatio: false
 
     }
 

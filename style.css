@@ -13,7 +13,8 @@ body{
 
 .container{
   display:flex;
-  min-height:100vh;
+  height:100vh;
+  overflow:hidden;
 }
 
 /* Sidebar */
@@ -23,6 +24,7 @@ body{
   background:#1e1b4b;
   color:white;
   padding:30px 20px;
+  overflow-y:auto;
 }
 
 .sidebar h2{
@@ -51,6 +53,8 @@ body{
 .main{
   flex:1;
   padding:30px;
+  overflow-y:auto;
+  height:100vh;
 }
 
 /* Header */
@@ -349,4 +353,22 @@ body{
 
 .sidebar{
   min-height:100vh;
+}
+/* Scrollbar */
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:#f1f1f1;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#4338ca;
+  border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background:#312e81;
 }

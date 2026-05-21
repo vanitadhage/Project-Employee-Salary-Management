@@ -61,21 +61,21 @@ function showDashboard() {
 
       </div>
 
-     <div class="top-actions">
+      <div class="top-actions">
 
-  <input
-    type="text"
-    placeholder="Search Employee">
+        <input
+          type="text"
+          placeholder="Search Employee">
 
-  <button
-    class="logout-btn"
-    onclick="logout()">
+        <button
+          class="logout-btn"
+          onclick="logout()">
 
-    Logout
+          Logout
 
-  </button>
+        </button>
 
-</div>
+      </div>
 
     </div>
 
@@ -103,11 +103,108 @@ function showDashboard() {
 
     </div>
 
+    <div class="charts-container">
+
+      <div class="chart-card">
+
+        <h2>Employee Growth</h2>
+
+        <canvas id="employeeChart"></canvas>
+
+      </div>
+
+      <div class="chart-card">
+
+        <h2>Payroll Analytics</h2>
+
+        <canvas id="salaryChart"></canvas>
+
+      </div>
+
+    </div>
+
   `;
 
-}
+  loadCharts();
 
-showDashboard();
+}
+function loadCharts() {
+
+  const employeeChart =
+    document.getElementById("employeeChart");
+
+  new Chart(employeeChart, {
+
+    type: "bar",
+
+    data: {
+
+      labels: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun"
+      ],
+
+      datasets: [{
+
+        label: "Employees",
+
+        data: [
+          40,
+          55,
+          70,
+          90,
+          110,
+          120
+        ],
+
+        backgroundColor: "#4338ca"
+
+      }]
+
+    }
+
+  });
+
+  const salaryChart =
+    document.getElementById("salaryChart");
+
+  new Chart(salaryChart, {
+
+    type: "doughnut",
+
+    data: {
+
+      labels: [
+        "Salary",
+        "Bonus",
+        "Deductions"
+      ],
+
+      datasets: [{
+
+        data: [
+          75,
+          15,
+          10
+        ],
+
+        backgroundColor: [
+          "#4338ca",
+          "#22c55e",
+          "#ef4444"
+        ]
+
+      }]
+
+    }
+
+  });
+
+}
 // ================= EMPLOYEES =================
 
 function showEmployees() {

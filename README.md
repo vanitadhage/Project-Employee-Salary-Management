@@ -5,3 +5,9 @@ The purpose of the project, such as automating salary calculations, managing emp
 
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/8c6b28ea-9382-4015-9609-8815275d4d8e" />
 
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/bef22835-aa8f-4e11-9dd9-828f8ddb4121" />
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/efb83e9f-81d6-4484-aa7c-65a1cc109455" />
+
+
+

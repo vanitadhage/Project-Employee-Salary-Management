@@ -217,10 +217,15 @@ table td{
 
 /* Responsive */
 
+
 @media(max-width:1000px){
 
   .cards{
     grid-template-columns:1fr 1fr;
+  }
+
+  .charts-container{
+    grid-template-columns:1fr;
   }
 
 }
@@ -247,11 +252,18 @@ table td{
   .header input{
     width:100%;
   }
-  .top-actions{
+
+}
+
+/* Top Actions */
+
+.top-actions{
   display:flex;
   align-items:center;
   gap:10px;
 }
+
+/* Logout Button */
 
 .logout-btn{
   padding:12px 18px;
@@ -265,7 +277,10 @@ table td{
 .logout-btn:hover{
   background:darkred;
 }
-  .charts-container{
+
+/* Charts */
+
+.charts-container{
 
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -280,13 +295,15 @@ table td{
   padding:25px;
   border-radius:15px;
   box-shadow:0 2px 10px rgba(0,0,0,0.1);
+  height:350px;
 
 }
 
 .chart-card h2{
-
   margin-bottom:20px;
-
 }
 
+.chart-card canvas{
+  width:100% !important;
+  height:300px !important;
 }

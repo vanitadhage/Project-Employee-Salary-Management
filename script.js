@@ -135,6 +135,13 @@ function displayEmployees() {
 
         <td>
 
+          <button class="edit-btn"
+            onclick="editEmployee(${index})">
+
+            Edit
+
+          </button>
+
           <button class="delete-btn"
             onclick="deleteEmployee(${index})">
 

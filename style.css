@@ -2,22 +2,24 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial;
+  font-family:Arial, sans-serif;
 }
 
 body{
   background:#f4f7fc;
 }
 
+/* Main Container */
+
 .container{
   display:flex;
+  min-height:100vh;
 }
 
 /* Sidebar */
 
 .sidebar{
   width:250px;
-  height:100vh;
   background:#1e1b4b;
   color:white;
   padding:30px 20px;
@@ -25,7 +27,7 @@ body{
 
 .sidebar h2{
   margin-bottom:40px;
-  font-size:30px;
+  font-size:35px;
 }
 
 .sidebar ul{
@@ -44,7 +46,7 @@ body{
   background:#4338ca;
 }
 
-/* Main */
+/* Main Content */
 
 .main{
   flex:1;
@@ -58,10 +60,12 @@ body{
   justify-content:space-between;
   align-items:center;
   margin-bottom:30px;
+  flex-wrap:wrap;
+  gap:20px;
 }
 
 .header h1{
-  font-size:35px;
+  font-size:40px;
 }
 
 .header p{
@@ -74,6 +78,8 @@ body{
   padding:12px;
   border:none;
   border-radius:10px;
+  outline:none;
+  background:white;
 }
 
 /* Cards */
@@ -101,7 +107,7 @@ body{
   font-size:35px;
 }
 
-/* Table */
+/* Table Section */
 
 .table-section{
   background:white;
@@ -113,7 +119,10 @@ body{
 .table-header{
   display:flex;
   justify-content:space-between;
+  align-items:center;
   margin-bottom:20px;
+  flex-wrap:wrap;
+  gap:20px;
 }
 
 .table-header button{
@@ -123,7 +132,14 @@ body{
   padding:12px 20px;
   border-radius:10px;
   cursor:pointer;
+  transition:0.3s;
 }
+
+.table-header button:hover{
+  background:#312e81;
+}
+
+/* Tables */
 
 table{
   width:100%;
@@ -141,10 +157,13 @@ table td{
   border-bottom:1px solid #eee;
 }
 
+/* Status */
+
 .status{
   padding:6px 12px;
   border-radius:20px;
   color:white;
+  font-size:14px;
 }
 
 .active{
@@ -155,9 +174,50 @@ table td{
   background:orange;
 }
 
+/* Delete Button */
+
+.delete-btn{
+  background:red;
+  color:white;
+  border:none;
+  padding:8px 15px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.delete-btn:hover{
+  background:darkred;
+}
+
+/* Edit Button */
+
+.edit-btn{
+  background:#4338ca;
+  color:white;
+  border:none;
+  padding:8px 15px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-right:10px;
+}
+
+.edit-btn:hover{
+  background:#312e81;
+}
+
+/* Settings Input */
+
+.settings-input{
+  padding:12px;
+  width:300px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  outline:none;
+}
+
 /* Responsive */
 
-@media(max-width:900px){
+@media(max-width:1000px){
 
   .cards{
     grid-template-columns:1fr 1fr;
@@ -173,7 +233,6 @@ table td{
 
   .sidebar{
     width:100%;
-    height:auto;
   }
 
   .cards{
@@ -182,40 +241,11 @@ table td{
 
   .header{
     flex-direction:column;
-    gap:20px;
+    align-items:flex-start;
   }
 
-.delete-btn{
-
-  background:red;
-  color:white;
-  border:none;
-  padding:8px 15px;
-  border-radius:8px;
-  cursor:pointer;
-
-}
-
-.delete-btn:hover{
-
-  background:darkred;
-
-}
-}
-.edit-btn{
-
-  background:#4338ca;
-  color:white;
-  border:none;
-  padding:8px 15px;
-  border-radius:8px;
-  cursor:pointer;
-  margin-right:10px;
-
-}
-
-.edit-btn:hover{
-
-  background:#312e81;
+  .header input{
+    width:100%;
+  }
 
 }

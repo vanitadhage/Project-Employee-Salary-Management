@@ -572,6 +572,72 @@ function generatePayslip() {
   `;
 
 }
+function downloadPDF(
+  name,
+  basicSalary,
+  hra,
+  bonus,
+  deduction,
+  netSalary
+){
+
+  const { jsPDF } = window.jspdf;
+
+  const doc = new jsPDF();
+
+  doc.setFontSize(22);
+
+  doc.text(
+    "Employee Payslip",
+    20,
+    20
+  );
+
+  doc.setFontSize(14);
+
+  doc.text(
+    `Employee Name: ${name}`,
+    20,
+    40
+  );
+
+  doc.text(
+    `Basic Salary: ₹${basicSalary}`,
+    20,
+    55
+  );
+
+  doc.text(
+    `HRA (20%): ₹${hra}`,
+    20,
+    70
+  );
+
+  doc.text(
+    `Bonus: ₹${bonus}`,
+    20,
+    85
+  );
+
+  doc.text(
+    `Deduction: ₹${deduction}`,
+    20,
+    100
+  );
+
+  doc.setFontSize(18);
+
+  doc.text(
+    `Net Salary: ₹${netSalary}`,
+    20,
+    125
+  );
+
+  doc.save(
+    `${name}_Payslip.pdf`
+  );
+
+}
 
 // ================= ATTENDANCE =================
 

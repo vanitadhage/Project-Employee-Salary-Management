@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <title>Login</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#f4f7fc;
+    }
+
+    .login-box{
+
+      width:350px;
+      background:white;
+      padding:40px;
+      border-radius:20px;
+      box-shadow:0 2px 15px rgba(0,0,0,0.1);
+
+    }
+
+    .login-box h1{
+
+      text-align:center;
+      margin-bottom:30px;
+      color:#1e1b4b;
+
+    }
+
+    .login-box input{
+
+      width:100%;
+      padding:14px;
+      margin-bottom:20px;
+      border:1px solid #ccc;
+      border-radius:10px;
+
+    }
+
+    .login-box button{
+
+      width:100%;
+      padding:14px;
+      border:none;
+      background:#4338ca;
+      color:white;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:16px;
+
+    }
+
+    .login-box button:hover{
+      background:#312e81;
+    }
+
+    .error{
+
+      color:red;
+      text-align:center;
+      margin-top:15px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="login-box">
+
+    <h1>PayManage Login</h1>
+
+    <input
+      type="text"
+      id="username"
+      placeholder="Enter Username">
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Enter Password">
+
+    <button onclick="login()">
+      Login
+    </button>
+
+    <p class="error" id="error"></p>
+
+  </div>
+
+  <script>
+
+    function login(){
+
+      const username =
+        document.getElementById("username").value;
+
+      const password =
+        document.getElementById("password").value;
+
+      if(
+        username === "admin"
+        &&
+        password === "admin123"
+      ){
+
+        sessionStorage.setItem(
+          "loggedIn",
+          "true"
+        );
+
+        window.location.href = "index.html";
+
+      }
+
+      else{
+
+        document.getElementById("error")
+        .innerText =
+        "Invalid Username or Password";
+
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>

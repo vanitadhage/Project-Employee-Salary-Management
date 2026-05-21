@@ -1,108 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Employee Salary Management</title>
 
   <link rel="stylesheet" href="style.css">
-
 </head>
+
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <!-- Sidebar -->
-  <div class="sidebar">
+    <!-- Sidebar -->
 
-    <h2>PayManage</h2>
+    <div class="sidebar">
 
-    <ul>
-      <li>Dashboard</li>
-      <li>Employees</li>
-      <li>Payroll</li>
-      <li>Attendance</li>
-      <li>Leaves</li>
-      <li>Reports</li>
-      <li>Settings</li>
-    </ul>
+      <h2>PayManage</h2>
+
+      <ul>
+        <li>Dashboard</li>
+        <li>Employees</li>
+        <li>Payroll</li>
+        <li>Attendance</li>
+        <li>Leaves</li>
+        <li>Reports</li>
+        <li>Settings</li
+        <li>Logout</li>
+      </ul>
+
+    </div>
+
+    <!-- Main -->
+
+    <div class="main">
+
+      <!-- Header -->
+
+      <div class="header">
+
+        <div>
+          <h1>Dashboard</h1>
+          <p>Welcome Back Admin</p>
+        </div>
+
+        <input type="text" placeholder="Search Employee">
+
+      </div>
+
+      <!-- Cards -->
+
+      <div class="cards">
+
+        <div class="card">
+          <h3>Total Employees</h3>
+          <h1>120</h1>
+        </div>
+
+        <div class="card">
+          <h3>Monthly Payroll</h3>
+          <h1>₹12.5L</h1>
+        </div>
+
+        <div class="card">
+          <h3>Attendance</h3>
+          <h1>92%</h1>
+        </div>
+
+        <div class="card">
+          <h3>Pending Salary</h3>
+          <h1>08</h1>
+        </div>
+
+      </div>
+
+      <!-- Employee Table -->
+
+      <div class="table-section">
+
+        <div class="table-header">
+
+          <h2>Employees</h2>
+
+          <button id="addEmployeeBtn">
+            Add Employee
+          </button>
+
+        </div>
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Department</th>
+              <th>Salary</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+
+          </thead>
+
+          <tbody id="employeeTable">
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
 
   </div>
 
-  <!-- Main Content -->
-  <div class="main">
-
-    <!-- Header -->
-    <div class="header">
-
-      <div>
-        <h1>Dashboard</h1>
-        <p>Welcome Back Admin</p>
-      </div>
-
-      <input type="text" placeholder="Search Employee">
-
-    </div>
-
-    <!-- Cards -->
-    <div class="cards">
-
-      <div class="card">
-        <h3>Total Employees</h3>
-        <h1>120</h1>
-      </div>
-
-      <div class="card">
-        <h3>Monthly Payroll</h3>
-        <h1>₹12.5L</h1>
-      </div>
-
-      <div class="card">
-        <h3>Attendance</h3>
-        <h1>92%</h1>
-      </div>
-
-      <div class="card">
-        <h3>Pending Salary</h3>
-        <h1>08</h1>
-      </div>
-
-    </div>
-
-    <!-- Employee Table -->
-    <div class="table-section">
-
-      <div class="table-header">
-        <h2>Employees</h2>
-
-        <button>Add Employee</button>
-      </div>
-
-      <table>
-
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Department</th>
-            <th>Salary</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-
-        <tbody id="employeeTable">
-        </tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
+
 </html>

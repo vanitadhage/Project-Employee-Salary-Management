@@ -184,6 +184,7 @@ table td{
     flex-direction:column;
     gap:20px;
   }
+}
 .delete-btn{
 
   background:red;
@@ -200,4 +201,20 @@ table td{
   background:darkred;
 
 }
+.edit-btn{
+
+  background:#4338ca;
+  color:white;
+  border:none;
+  padding:8px 15px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-right:10px;
+
+}
+
+.edit-btn:hover{
+
+  background:#312e81;
+
 }

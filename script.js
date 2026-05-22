@@ -259,14 +259,14 @@ function showEmployees() {
 
         <thead>
 
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Department</th>
-            <th>Salary</th>
-            <th>Action</th>
-          </tr>
-
+         <tr>
+  <th>Photo</th>
+  <th>ID</th>
+  <th>Name</th>
+  <th>Department</th>
+  <th>Salary</th>
+  <th>Action</th>
+</tr>
         </thead>
 
         <tbody id="employeeTable">
@@ -357,7 +357,17 @@ function displayEmployees(data) {
     table.innerHTML += `
 
       <tr>
+         <td>
 
+  <img
+    src="${
+      employee.image ||
+      'https://via.placeholder.com/50'
+    }"
+
+    class="employee-img">
+
+</td>
         <td>${employee.id}</td>
 
         <td>${employee.name}</td>

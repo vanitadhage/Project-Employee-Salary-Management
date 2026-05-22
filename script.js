@@ -67,13 +67,25 @@ function showDashboard() {
           type="text"
           placeholder="Search Employee">
 
-        <button
-          class="logout-btn"
-          onclick="logout()">
+      <div style="display:flex; gap:10px;">
 
-          Logout
+  <button
+    class="theme-btn"
+    onclick="toggleTheme()">
 
-        </button>
+    Theme
+
+  </button>
+
+  <button
+    class="logout-btn"
+    onclick="logout()">
+
+    Logout
+
+  </button>
+
+</div>
 
       </div>
 
@@ -920,5 +932,46 @@ function logout(){
   sessionStorage.removeItem("loggedIn");
 
   window.location.href = "login.html";
+
+}
+function toggleTheme(){
+
+  document.body.classList.toggle("dark-mode");
+
+  if(
+    document.body.classList.contains(
+      "dark-mode"
+    )
+  ){
+
+    localStorage.setItem(
+      "theme",
+      "dark"
+    );
+
+  }
+
+  else{
+
+    localStorage.setItem(
+      "theme",
+      "light"
+    );
+
+  }
+
+}
+
+
+/* Load Saved Theme */
+
+if(
+  localStorage.getItem("theme")
+  === "dark"
+){
+
+  document.body.classList.add(
+    "dark-mode"
+  );
 
 }

@@ -53,9 +53,65 @@ function showDashboard() {
 
   contentArea.innerHTML = `
 
-    <div class="header">
+   <div class="header">
+
+  <div>
+
+    <h1>
+      Welcome Admin 👋
+    </h1>
+
+    <p id="liveDateTime"></p>
+
+  </div>
+
+  <div class="top-actions">
+
+    <input
+      type="text"
+      placeholder="Search Employee">
+
+    <button class="notification-btn">
+
+      🔔
+
+    </button>
+
+    <div class="profile-box">
+
+      <img
+        src="https://i.pravatar.cc/100"
+        class="profile-img">
 
       <div>
+
+        <h4>Admin</h4>
+
+        <small>HR Manager</small>
+
+      </div>
+
+    </div>
+
+    <button
+      class="theme-btn"
+      onclick="toggleTheme()">
+
+      Theme
+
+    </button>
+
+    <button
+      class="logout-btn"
+      onclick="logout()">
+
+      Logout
+
+    </button>
+
+  </div>
+
+</div>
 
         <h1>Dashboard</h1>
 
@@ -1131,3 +1187,28 @@ function toggleTheme(){
   );
 
 }
+function updateDateTime(){
+
+  const now = new Date();
+
+  const dateTime =
+    now.toLocaleString();
+
+  const dateElement =
+    document.getElementById(
+      "liveDateTime"
+    );
+
+  if(dateElement){
+
+    dateElement.innerText =
+      dateTime;
+
+  }
+
+}
+
+setInterval(
+  updateDateTime,
+  1000
+);

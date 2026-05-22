@@ -372,3 +372,73 @@ body{
 ::-webkit-scrollbar-thumb:hover{
   background:#312e81;
 }
+/* Theme Button */
+
+.theme-btn{
+
+  padding:12px 18px;
+  background:#111827;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+
+}
+
+.theme-btn:hover{
+  background:black;
+}
+
+/* Dark Mode */
+
+.dark-mode{
+
+  background:#111827;
+  color:white;
+
+}
+
+.dark-mode .main{
+  background:#111827;
+}
+
+.dark-mode .card,
+.dark-mode .table-section,
+.dark-mode .chart-card{
+
+  background:#1f2937;
+  color:white;
+
+}
+
+.dark-mode table th{
+
+  background:#374151;
+  color:white;
+
+}
+
+.dark-mode table td{
+  color:white;
+  border-color:#374151;
+}
+
+.dark-mode input{
+
+  background:#374151;
+  color:white;
+  border:none;
+
+}
+
+.dark-mode .header p{
+  color:#d1d5db;
+}
+
+.dark-mode .settings-input{
+
+  background:#374151;
+  color:white;
+  border:none;
+
+}

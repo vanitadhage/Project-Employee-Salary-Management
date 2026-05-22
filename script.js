@@ -1212,3 +1212,24 @@ setInterval(
   updateDateTime,
   1000
 );
+
+function setActive(element){
+
+  const items =
+    document.querySelectorAll(
+      ".sidebar ul li"
+    );
+
+  items.forEach(item => {
+
+    item.classList.remove(
+      "active-menu"
+    );
+
+  });
+
+  element.classList.add(
+    "active-menu"
+  );
+
+}

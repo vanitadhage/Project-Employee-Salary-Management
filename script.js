@@ -249,20 +249,9 @@ function showEmployees() {
 
         <h2>Employees</h2>
 
-        <div>
-
-          <input
-            type="text"
-            id="searchInput"
-            placeholder="Search Employee"
-            class="settings-input"
-            onkeyup="searchEmployee()">
-
-          <button onclick="addEmployee()">
-            Add Employee
-          </button>
-
-        </div>
+        <button onclick="openEmployeeModal()">
+          Add Employee
+        </button>
 
       </div>
 
@@ -271,14 +260,11 @@ function showEmployees() {
         <thead>
 
           <tr>
-
             <th>ID</th>
             <th>Name</th>
             <th>Department</th>
             <th>Salary</th>
-            <th>Status</th>
             <th>Action</th>
-
           </tr>
 
         </thead>
@@ -291,13 +277,67 @@ function showEmployees() {
 
     </div>
 
+    <!-- Employee Modal -->
+
+    <div
+      id="employeeModal"
+      class="modal">
+
+      <div class="modal-content">
+
+        <span
+          class="close-btn"
+          onclick="closeEmployeeModal()">
+
+          &times;
+
+        </span>
+
+        <h2>Add Employee</h2>
+
+        <br>
+
+        <input
+          type="text"
+          id="employeeName"
+          class="settings-input"
+          placeholder="Employee Name">
+
+        <br><br>
+
+        <input
+          type="text"
+          id="employeeDepartment"
+          class="settings-input"
+          placeholder="Department">
+
+        <br><br>
+
+        <input
+          type="number"
+          id="employeeSalary"
+          class="settings-input"
+          placeholder="Salary">
+
+        <br><br>
+
+        <button
+          onclick="saveEmployee()"
+          class="save-btn">
+
+          Save Employee
+
+        </button>
+
+      </div>
+
+    </div>
+
   `;
 
-  displayEmployees(employees);
+  displayEmployees();
 
 }
-
-
 // ================= DISPLAY EMPLOYEES =================
 
 function displayEmployees(data) {
@@ -360,44 +400,77 @@ function displayEmployees(data) {
   });
 
 }
+function openEmployeeModal(){
+
+  document.getElementById(
+    "employeeModal"
+  ).style.display = "flex";
+
+}
+
+function closeEmployeeModal(){
+
+  document.getElementById(
+    "employeeModal"
+  ).style.display = "none";
+
+}
 
 
 // ================= ADD EMPLOYEE =================
 
-function addEmployee() {
+function saveEmployee(){
 
-  const name = prompt("Enter Employee Name");
+  const name =
+    document.getElementById(
+      "employeeName"
+    ).value;
 
-  if (!name) return;
+  const department =
+    document.getElementById(
+      "employeeDepartment"
+    ).value;
 
-  const department = prompt("Enter Department");
+  const salary =
+    document.getElementById(
+      "employeeSalary"
+    ).value;
 
-  if (!department) return;
+  if(
+    !name ||
+    !department ||
+    !salary
+  ){
 
-  const salary = prompt("Enter Salary");
+    alert("Please fill all details");
 
-  if (!salary) return;
+    return;
+
+  }
 
   employees.push({
 
-    id: "EMP00" + (employees.length + 1),
+    id:
+      "EMP00" +
+      (employees.length + 1),
 
-    name: name,
-
-    department: department,
-
-    salary: salary,
-
-    status: "Active"
+    name,
+    department,
+    salary:
+      "₹" + salary
 
   });
 
-  saveEmployees();
+  localStorage.setItem(
+    "employees",
+    JSON.stringify(employees)
+  );
 
-  showEmployees();
+  displayEmployees();
+
+  closeEmployeeModal();
 
 }
-
 
 // ================= DELETE EMPLOYEE =================
 

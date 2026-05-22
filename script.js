@@ -320,6 +320,12 @@ function showEmployees() {
           placeholder="Salary">
 
         <br><br>
+        <br><br>
+
+<input
+  type="file"
+  id="employeeImage"
+  accept="image/*">
 
         <button
           onclick="saveEmployee()"
@@ -436,6 +442,11 @@ function saveEmployee(){
       "employeeSalary"
     ).value;
 
+  const imageInput =
+    document.getElementById(
+      "employeeImage"
+    );
+
   if(
     !name ||
     !department ||
@@ -448,27 +459,76 @@ function saveEmployee(){
 
   }
 
-  employees.push({
+  const reader = new FileReader();
 
-    id:
-      "EMP00" +
-      (employees.length + 1),
+  reader.onload = function(e){
 
-    name,
-    department,
-    salary:
-      "₹" + salary
+    employees.push({
 
-  });
+      id:
+        "EMP00" +
+        (employees.length + 1),
 
-  localStorage.setItem(
-    "employees",
-    JSON.stringify(employees)
-  );
+      name,
 
-  displayEmployees();
+      department,
 
-  closeEmployeeModal();
+      salary:
+        "₹" + salary,
+
+      image:
+        e.target.result
+
+    });
+
+    localStorage.setItem(
+      "employees",
+      JSON.stringify(employees)
+    );
+
+    displayEmployees();
+
+    closeEmployeeModal();
+
+  };
+
+  if(imageInput.files[0]){
+
+    reader.readAsDataURL(
+      imageInput.files[0]
+    );
+
+  }
+
+  else{
+
+    employees.push({
+
+      id:
+        "EMP00" +
+        (employees.length + 1),
+
+      name,
+
+      department,
+
+      salary:
+        "₹" + salary,
+
+      image:""
+
+    });
+
+    localStorage.setItem(
+      "employees",
+      JSON.stringify(employees)
+    );
+
+    displayEmployees();
+
+    closeEmployeeModal();
+
+  }
 
 }
 

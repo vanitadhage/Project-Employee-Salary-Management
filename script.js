@@ -1,7 +1,4 @@
-let employees =
-  JSON.parse(
-    localStorage.getItem("employees")
-  ) || [];
+
 
 if (
   sessionStorage.getItem("loggedIn")

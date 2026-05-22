@@ -346,7 +346,9 @@ function showEmployees() {
 }
 // ================= DISPLAY EMPLOYEES =================
 
-function displayEmployees(data) {
+function displayEmployees(
+  data = employees
+) {
 
   const table = document.getElementById("employeeTable");
 

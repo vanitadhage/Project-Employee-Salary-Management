@@ -1,3 +1,8 @@
+let employees =
+  JSON.parse(
+    localStorage.getItem("employees")
+  ) || [];
+
 if (
   sessionStorage.getItem("loggedIn")
   !== "true"
@@ -350,90 +355,88 @@ function displayEmployees(
   data = employees
 ) {
 
-  const table = document.getElementById("employeeTable");
+  const table =
+    document.getElementById(
+      "employeeTable"
+    );
 
   table.innerHTML = "";
 
-  data.forEach((employee, index) => {
+  data.forEach(
+    (employee, index) => {
 
-    table.innerHTML += `
+      table.innerHTML += `
 
-      <tr>
-         <td>
+        <tr>
 
-  <img
-    src="${
-      employee.image ||
-      'https://via.placeholder.com/50'
-    }"
+          <td>
 
-    class="employee-img">
+            <img
+              src="${
+                employee.image ||
+                'https://via.placeholder.com/50'
+              }"
 
-</td>
-        <td>${employee.id}</td>
+              class="employee-img">
 
-        <td>${employee.name}</td>
+          </td>
 
-        <td>${employee.department}</td>
+          <td>${employee.id}</td>
 
-        <td>${employee.salary}</td>
+          <td>${employee.name}</td>
 
-        <td>
+          <td>${employee.department}</td>
 
-          <span class="
-            status
-            ${employee.status.toLowerCase()}
-          ">
+          <td>${employee.salary}</td>
 
-            ${employee.status}
+          <td>
 
-          </span>
+            <span class="
+              status
+              ${
+                employee.status
+                ? employee.status.toLowerCase()
+                : 'active'
+              }
+            ">
 
-        </td>
+              ${
+                employee.status ||
+                'Active'
+              }
 
-        <td>
+            </span>
 
-          <button
-            class="edit-btn"
-            onclick="editEmployee(${index})">
+          </td>
 
-            Edit
+          <td>
 
-          </button>
+            <button
+              class="edit-btn"
+              onclick="editEmployee(${index})">
 
-          <button
-            class="delete-btn"
-            onclick="deleteEmployee(${index})">
+              Edit
 
-            Delete
+            </button>
 
-          </button>
+            <button
+              class="delete-btn"
+              onclick="deleteEmployee(${index})">
 
-        </td>
+              Delete
 
-      </tr>
+            </button>
 
-    `;
+          </td>
 
-  });
+        </tr>
 
-}
-function openEmployeeModal(){
+      `;
 
-  document.getElementById(
-    "employeeModal"
-  ).style.display = "flex";
-
-}
-
-function closeEmployeeModal(){
-
-  document.getElementById(
-    "employeeModal"
-  ).style.display = "none";
+    }
+  );
 
 }
-
 
 // ================= ADD EMPLOYEE =================
 
@@ -465,33 +468,36 @@ function saveEmployee(){
     !salary
   ){
 
-    alert("Please fill all details");
+    alert(
+      "Please fill all details"
+    );
 
     return;
 
   }
 
-  const reader = new FileReader();
+  const reader =
+    new FileReader();
 
   reader.onload = function(e){
 
-    employees.push({
+    const employee = {
 
       id:
         "EMP00" +
         (employees.length + 1),
 
-      name,
+      name:name,
 
-      department,
+      department:department,
 
-      salary:
-        "₹" + salary,
+      salary:"₹" + salary,
 
-      image:
-        e.target.result
+      image:e.target.result
 
-    });
+    };
+
+    employees.push(employee);
 
     localStorage.setItem(
       "employees",
@@ -504,7 +510,7 @@ function saveEmployee(){
 
   };
 
-  if(imageInput.files[0]){
+  if(imageInput.files.length > 0){
 
     reader.readAsDataURL(
       imageInput.files[0]
@@ -514,22 +520,23 @@ function saveEmployee(){
 
   else{
 
-    employees.push({
+    const employee = {
 
       id:
         "EMP00" +
         (employees.length + 1),
 
-      name,
+      name:name,
 
-      department,
+      department:department,
 
-      salary:
-        "₹" + salary,
+      salary:"₹" + salary,
 
-      image:""
+      image:"https://via.placeholder.com/50"
 
-    });
+    };
+
+    employees.push(employee);
 
     localStorage.setItem(
       "employees",

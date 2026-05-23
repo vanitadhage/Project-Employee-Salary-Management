@@ -53,69 +53,18 @@ function showDashboard() {
 
   contentArea.innerHTML = `
 
-   <div class="header">
-
-  <div>
-
-    <h1>
-      Welcome Admin 👋
-    </h1>
-
-    <p id="liveDateTime"></p>
-
-  </div>
-
-  <div class="top-actions">
-
-    <input
-      type="text"
-      placeholder="Search Employee">
-
-    <button class="notification-btn">
-
-      🔔
-
-    </button>
-
-    <div class="profile-box">
-
-      <img
-        src="https://i.pravatar.cc/100"
-        class="profile-img">
+    <div class="header">
 
       <div>
 
-        <h4>Admin</h4>
+        <h1 class="dashboard-title">
+          Welcome Admin 👋
+        </h1>
 
-        <small>HR Manager</small>
-
-      </div>
-
-    </div>
-
-    <button
-      class="theme-btn"
-      onclick="toggleTheme()">
-
-      Theme
-
-    </button>
-
-    <button
-      class="logout-btn"
-      onclick="logout()">
-
-      Logout
-
-    </button>
-
-  </div>
-
-</div>
-
-        <h1>Dashboard</h1>
-
-        <p>Welcome Back Admin</p>
+        <p
+          id="liveDateTime"
+          class="dashboard-subtitle">
+        </p>
 
       </div>
 
@@ -125,25 +74,43 @@ function showDashboard() {
           type="text"
           placeholder="Search Employee">
 
-      <div style="display:flex; gap:10px;">
+        <button class="notification-btn">
 
-  <button
-    class="theme-btn"
-    onclick="toggleTheme()">
+          🔔
 
-    Theme
+        </button>
 
-  </button>
+        <div class="profile-box">
 
-  <button
-    class="logout-btn"
-    onclick="logout()">
+          <img
+            src="https://i.pravatar.cc/100"
+            class="profile-img">
 
-    Logout
+          <div>
 
-  </button>
+            <h4>Admin</h4>
 
-</div>
+            <small>HR Manager</small>
+
+          </div>
+
+        </div>
+
+        <button
+          class="theme-btn"
+          onclick="toggleTheme()">
+
+          Theme
+
+        </button>
+
+        <button
+          class="logout-btn"
+          onclick="logout()">
+
+          Logout
+
+        </button>
 
       </div>
 
@@ -152,23 +119,35 @@ function showDashboard() {
     <div class="cards">
 
       <div class="card">
+
         <h3>Total Employees</h3>
+
         <h1>${employees.length}</h1>
+
       </div>
 
       <div class="card">
+
         <h3>Monthly Payroll</h3>
+
         <h1>₹12.5L</h1>
+
       </div>
 
       <div class="card">
+
         <h3>Attendance</h3>
+
         <h1>92%</h1>
+
       </div>
 
       <div class="card">
+
         <h3>Pending Salary</h3>
+
         <h1>08</h1>
+
       </div>
 
     </div>
@@ -196,6 +175,18 @@ function showDashboard() {
   `;
 
   loadCharts();
+
+  updateDateTime();
+
+}
+function updateDateTime(){
+
+  const now = new Date();
+
+  document.getElementById(
+    "liveDateTime"
+  ).innerHTML =
+    now.toLocaleString();
 
 }
 function loadCharts() {

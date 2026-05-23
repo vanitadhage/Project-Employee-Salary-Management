@@ -14,13 +14,15 @@ The purpose of the project, such as automating salary calculations, managing emp
 <img width="1352" height="664" alt="image" src="https://github.com/user-attachments/assets/541fe0b9-6be1-498c-b207-7836ed7e1280" />
 
 
-<img width="1360" height="625" alt="image" src="https://github.com/user-attachments/assets/4433ba5f-d52e-47fd-a1ec-564cb29fcedd" />
+<img width="1362" height="616" alt="image" src="https://github.com/user-attachments/assets/51876b4e-77ca-40a6-b304-dac8b96b1e26" />
 
 
-<img width="1355" height="625" alt="image" src="https://github.com/user-attachments/assets/168665f8-a10c-46e1-9e1d-8735934b667f" />
+
+<img width="1342" height="620" alt="image" src="https://github.com/user-attachments/assets/792d6927-ba40-41fd-91c7-0359021cb714" />
 
 
-<img width="1342" height="623" alt="image" src="https://github.com/user-attachments/assets/d4bc8d3f-be7c-432a-a6bf-cad22ec68666" />
+<img width="1358" height="613" alt="image" src="https://github.com/user-attachments/assets/2e97c207-8426-41d7-8914-621f210162fd" />
 
 
-<img width="1359" height="619" alt="image" src="https://github.com/user-attachments/assets/2b104576-1e83-442b-9b5c-0c493beae3f9" />
+<img width="1345" height="606" alt="image" src="https://github.com/user-attachments/assets/6985bc4e-8ebd-42be-9abd-a8b0b813e00d" />
+

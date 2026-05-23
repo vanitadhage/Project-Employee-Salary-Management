@@ -1210,6 +1210,127 @@ function showReports(){
   loadReportCharts();
 
 }
+function loadReportCharts(){
+
+  const reportCanvas =
+    document.getElementById(
+      "reportChart"
+    );
+
+  const departmentCanvas =
+    document.getElementById(
+      "departmentChart"
+    );
+
+  if(
+    !reportCanvas ||
+    !departmentCanvas
+  ){
+    return;
+  }
+
+  new Chart(reportCanvas, {
+
+    type:"line",
+
+    data:{
+
+      labels:[
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun"
+      ],
+
+      datasets:[{
+
+        label:"Performance",
+
+        data:[
+          65,
+          72,
+          78,
+          81,
+          90,
+          95
+        ],
+
+        borderColor:"#4338ca",
+
+        backgroundColor:
+          "rgba(67,56,202,0.2)",
+
+        tension:0.4,
+
+        fill:true
+
+      }]
+
+    },
+
+    options:{
+
+      responsive:true,
+
+      maintainAspectRatio:false
+
+    }
+
+  });
+
+  new Chart(departmentCanvas, {
+
+    type:"pie",
+
+    data:{
+
+      labels:[
+        "IT",
+        "HR",
+        "Finance",
+        "Marketing"
+      ],
+
+      datasets:[{
+
+        data:[
+          40,
+          20,
+          25,
+          15
+        ],
+
+        backgroundColor:[
+          "#4338ca",
+          "#22c55e",
+          "#f59e0b",
+          "#ef4444"
+        ]
+
+      }]
+
+    },
+
+    options:{
+
+      responsive:true,
+
+      maintainAspectRatio:false
+
+    }
+
+  });
+
+}
+function downloadReport(){
+
+  alert(
+    "Report Download Started"
+  );
+
+}
 // ================= SETTINGS =================
 
 function showSettings(){

@@ -1,4 +1,4 @@
-
+// ================= LOGIN CHECK =================
 
 if (
   sessionStorage.getItem("loggedIn")
@@ -9,9 +9,12 @@ if (
 
 }
 
+// ================= CONTENT AREA =================
 
-const contentArea = document.getElementById("contentArea");
-
+const contentArea =
+  document.getElementById(
+    "contentArea"
+  );
 
 // ================= LOCAL STORAGE =================
 
@@ -24,7 +27,8 @@ let employees = JSON.parse(
     name: "Rahul Sharma",
     department: "IT",
     salary: "₹55,000",
-    status: "Active"
+    status: "Active",
+    image: "https://i.pravatar.cc/100?img=1"
   },
 
   {
@@ -32,12 +36,15 @@ let employees = JSON.parse(
     name: "Sneha Patil",
     department: "HR",
     salary: "₹60,000",
-    status: "Pending"
+    status: "Pending",
+    image: "https://i.pravatar.cc/100?img=2"
   }
 
 ];
 
-function saveEmployees() {
+// ================= SAVE EMPLOYEE =================
+
+function saveEmployees(){
 
   localStorage.setItem(
     "employees",
@@ -46,10 +53,9 @@ function saveEmployees() {
 
 }
 
-
 // ================= DASHBOARD =================
 
-function showDashboard() {
+function showDashboard(){
 
   contentArea.innerHTML = `
 
@@ -58,7 +64,9 @@ function showDashboard() {
       <div>
 
         <h1 class="dashboard-title">
+
           Welcome Admin 👋
+
         </h1>
 
         <p
@@ -179,35 +187,60 @@ function showDashboard() {
   updateDateTime();
 
 }
+
+// ================= LIVE TIME =================
+
 function updateDateTime(){
 
   const now = new Date();
 
-  document.getElementById(
-    "liveDateTime"
-  ).innerHTML =
-    now.toLocaleString();
+  const dateElement =
+    document.getElementById(
+      "liveDateTime"
+    );
+
+  if(dateElement){
+
+    dateElement.innerHTML =
+      now.toLocaleString();
+
+  }
 
 }
-function loadCharts() {
+
+setInterval(
+  updateDateTime,
+  1000
+);
+
+// ================= CHARTS =================
+
+function loadCharts(){
 
   const employeeCanvas =
-    document.getElementById("employeeChart");
+    document.getElementById(
+      "employeeChart"
+    );
 
   const salaryCanvas =
-    document.getElementById("salaryChart");
+    document.getElementById(
+      "salaryChart"
+    );
 
-  if (!employeeCanvas || !salaryCanvas) {
+  if(
+    !employeeCanvas ||
+    !salaryCanvas
+  ){
     return;
   }
 
   new Chart(employeeCanvas, {
 
-    type: "bar",
+    type:"bar",
 
-    data: {
+    data:{
 
-      labels: [
+      labels:[
         "Jan",
         "Feb",
         "Mar",
@@ -216,11 +249,11 @@ function loadCharts() {
         "Jun"
       ],
 
-      datasets: [{
+      datasets:[{
 
-        label: "Employees",
+        label:"Employees",
 
-        data: [
+        data:[
           40,
           55,
           70,
@@ -229,17 +262,17 @@ function loadCharts() {
           120
         ],
 
-        backgroundColor: "#4338ca"
+        backgroundColor:"#4338ca"
 
       }]
 
     },
 
-    options: {
+    options:{
 
-      responsive: true,
+      responsive:true,
 
-      maintainAspectRatio: false
+      maintainAspectRatio:false
 
     }
 
@@ -247,25 +280,25 @@ function loadCharts() {
 
   new Chart(salaryCanvas, {
 
-    type: "doughnut",
+    type:"doughnut",
 
-    data: {
+    data:{
 
-      labels: [
+      labels:[
         "Salary",
         "Bonus",
         "Deductions"
       ],
 
-      datasets: [{
+      datasets:[{
 
-        data: [
+        data:[
           75,
           15,
           10
         ],
 
-        backgroundColor: [
+        backgroundColor:[
           "#4338ca",
           "#22c55e",
           "#ef4444"
@@ -275,20 +308,21 @@ function loadCharts() {
 
     },
 
-    options: {
+    options:{
 
-      responsive: true,
+      responsive:true,
 
-      maintainAspectRatio: false
+      maintainAspectRatio:false
 
     }
 
   });
 
 }
+
 // ================= EMPLOYEES =================
 
-function showEmployees() {
+function showEmployees(){
 
   contentArea.innerHTML = `
 
@@ -298,8 +332,11 @@ function showEmployees() {
 
         <h2>Employees</h2>
 
-        <button onclick="openEmployeeModal()">
+        <button
+          onclick="openEmployeeModal()">
+
           Add Employee
+
         </button>
 
       </div>
@@ -308,14 +345,18 @@ function showEmployees() {
 
         <thead>
 
-         <tr>
-  <th>Photo</th>
-  <th>ID</th>
-  <th>Name</th>
-  <th>Department</th>
-  <th>Salary</th>
-  <th>Action</th>
-</tr>
+          <tr>
+
+            <th>Photo</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Status</th>
+            <th>Action</th>
+
+          </tr>
+
         </thead>
 
         <tbody id="employeeTable">
@@ -325,8 +366,6 @@ function showEmployees() {
       </table>
 
     </div>
-
-    <!-- Employee Modal -->
 
     <div
       id="employeeModal"
@@ -369,12 +408,13 @@ function showEmployees() {
           placeholder="Salary">
 
         <br><br>
-        <br><br>
 
-<input
-  type="file"
-  id="employeeImage"
-  accept="image/*">
+        <input
+          type="file"
+          id="employeeImage"
+          accept="image/*">
+
+        <br><br>
 
         <button
           onclick="saveEmployee()"
@@ -393,11 +433,12 @@ function showEmployees() {
   displayEmployees();
 
 }
-// ================= DISPLAY EMPLOYEES =================
+
+// ================= DISPLAY EMPLOYEE =================
 
 function displayEmployees(
   data = employees
-) {
+){
 
   const table =
     document.getElementById(
@@ -407,7 +448,7 @@ function displayEmployees(
   table.innerHTML = "";
 
   data.forEach(
-    (employee, index) => {
+    (employee,index)=>{
 
       table.innerHTML += `
 
@@ -416,11 +457,7 @@ function displayEmployees(
           <td>
 
             <img
-              src="${
-                employee.image ||
-                'https://via.placeholder.com/50'
-              }"
-
+              src="${employee.image}"
               class="employee-img">
 
           </td>
@@ -438,16 +475,11 @@ function displayEmployees(
             <span class="
               status
               ${
-                employee.status
-                ? employee.status.toLowerCase()
-                : 'active'
+                employee.status.toLowerCase()
               }
             ">
 
-              ${
-                employee.status ||
-                'Active'
-              }
+              ${employee.status}
 
             </span>
 
@@ -479,6 +511,24 @@ function displayEmployees(
 
     }
   );
+
+}
+
+// ================= MODAL =================
+
+function openEmployeeModal(){
+
+  document.getElementById(
+    "employeeModal"
+  ).style.display = "flex";
+
+}
+
+function closeEmployeeModal(){
+
+  document.getElementById(
+    "employeeModal"
+  ).style.display = "none";
 
 }
 
@@ -537,16 +587,15 @@ function saveEmployee(){
 
       salary:"₹" + salary,
 
+      status:"Active",
+
       image:e.target.result
 
     };
 
     employees.push(employee);
 
-    localStorage.setItem(
-      "employees",
-      JSON.stringify(employees)
-    );
+    saveEmployees();
 
     displayEmployees();
 
@@ -554,7 +603,9 @@ function saveEmployee(){
 
   };
 
-  if(imageInput.files.length > 0){
+  if(
+    imageInput.files.length > 0
+  ){
 
     reader.readAsDataURL(
       imageInput.files[0]
@@ -576,16 +627,16 @@ function saveEmployee(){
 
       salary:"₹" + salary,
 
-      image:"https://via.placeholder.com/50"
+      status:"Active",
+
+      image:
+        "https://i.pravatar.cc/100"
 
     };
 
     employees.push(employee);
 
-    localStorage.setItem(
-      "employees",
-      JSON.stringify(employees)
-    );
+    saveEmployees();
 
     displayEmployees();
 
@@ -595,11 +646,11 @@ function saveEmployee(){
 
 }
 
-// ================= DELETE EMPLOYEE =================
+// ================= DELETE =================
 
-function deleteEmployee(index) {
+function deleteEmployee(index){
 
-  employees.splice(index, 1);
+  employees.splice(index,1);
 
   saveEmployees();
 
@@ -607,43 +658,43 @@ function deleteEmployee(index) {
 
 }
 
+// ================= EDIT =================
 
-// ================= EDIT EMPLOYEE =================
+function editEmployee(index){
 
-function editEmployee(index) {
-
-  const employee = employees[index];
+  const employee =
+    employees[index];
 
   const newName = prompt(
     "Edit Name",
     employee.name
   );
 
-  if (!newName) return;
+  if(!newName) return;
 
   const newDepartment = prompt(
     "Edit Department",
     employee.department
   );
 
-  if (!newDepartment) return;
+  if(!newDepartment) return;
 
   const newSalary = prompt(
     "Edit Salary",
     employee.salary
   );
 
-  if (!newSalary) return;
+  if(!newSalary) return;
 
   employees[index] = {
 
     ...employee,
 
-    name: newName,
+    name:newName,
 
-    department: newDepartment,
+    department:newDepartment,
 
-    salary: newSalary
+    salary:newSalary
 
   };
 
@@ -653,486 +704,112 @@ function editEmployee(index) {
 
 }
 
-
-// ================= SEARCH EMPLOYEE =================
-
-function searchEmployee() {
-
-  const searchValue =
-    document.getElementById("searchInput")
-    .value
-    .toLowerCase();
-
-  const filteredEmployees =
-    employees.filter(employee =>
-
-      employee.name
-      .toLowerCase()
-      .includes(searchValue)
-
-    );
-
-  displayEmployees(filteredEmployees);
-
-}
-
-
 // ================= PAYROLL =================
 
-function showPayroll() {
+function showPayroll(){
 
   contentArea.innerHTML = `
 
     <div class="table-section">
 
-      <h1 style="margin-bottom:20px;">
-        Salary Calculator
-      </h1>
+      <h1>Payroll Module</h1>
 
-      <div style="
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:20px;
-      ">
+      <br>
 
-        <div>
-
-          <label>Employee Name</label>
-
-          <br><br>
-
-          <input
-            type="text"
-            id="empName"
-            class="settings-input"
-            placeholder="Enter Employee Name">
-
-          <br><br>
-
-          <label>Basic Salary</label>
-
-          <br><br>
-
-          <input
-            type="number"
-            id="basicSalary"
-            class="settings-input"
-            placeholder="Enter Basic Salary">
-
-          <br><br>
-
-          <label>Bonus</label>
-
-          <br><br>
-
-          <input
-            type="number"
-            id="bonus"
-            class="settings-input"
-            placeholder="Enter Bonus">
-
-          <br><br>
-
-          <label>Deductions</label>
-
-          <br><br>
-
-          <input
-            type="number"
-            id="deduction"
-            class="settings-input"
-            placeholder="Enter Deduction">
-
-          <br><br>
-
-          <button
-            onclick="generatePayslip()"
-            style="
-              background:#4338ca;
-              color:white;
-              border:none;
-              padding:12px 20px;
-              border-radius:10px;
-              cursor:pointer;
-            ">
-
-            Generate Payslip
-
-          </button>
-
-        </div>
-
-        <div id="payslipResult">
-
-        </div>
-
-      </div>
+      <p>
+        Payroll Management Working Successfully
+      </p>
 
     </div>
 
   `;
-
-}
-function generatePayslip() {
-
-  const name =
-    document.getElementById("empName").value;
-
-  const basicSalary =
-    Number(
-      document.getElementById("basicSalary").value
-    );
-
-  const bonus =
-    Number(
-      document.getElementById("bonus").value
-    );
-
-  const deduction =
-    Number(
-      document.getElementById("deduction").value
-    );
-
-  if(
-    !name ||
-    !basicSalary
-  ){
-
-    alert("Please fill all details");
-
-    return;
-
-  }
-
-  const hra = basicSalary * 0.20;
-
-  const netSalary =
-    basicSalary +
-    hra +
-    bonus -
-    deduction;
-
-  document.getElementById("payslipResult")
-  .innerHTML = `
-
-    <div class="card">
-
-      <h2 style="
-        margin-bottom:20px;
-        color:#4338ca;
-      ">
-
-        Employee Payslip
-
-      </h2>
-
-      <p>
-        <strong>Name:</strong>
-        ${name}
-      </p>
-
-      <br>
-
-      <p>
-        <strong>Basic Salary:</strong>
-        ₹${basicSalary}
-      </p>
-
-      <br>
-
-      <p>
-        <strong>HRA (20%):</strong>
-        ₹${hra}
-      </p>
-
-      <br>
-
-      <p>
-        <strong>Bonus:</strong>
-        ₹${bonus}
-      </p>
-
-      <br>
-
-      <p>
-        <strong>Deductions:</strong>
-        ₹${deduction}
-      </p>
-
-      <hr style="margin:20px 0;">
-
-      <h2>
-  Net Salary:
-  ₹${netSalary}
-</h2>
-
-<br>
-
-<button
-  onclick="
-    downloadPDF(
-      '${name}',
-      '${basicSalary}',
-      '${hra}',
-      '${bonus}',
-      '${deduction}',
-      '${netSalary}'
-    )
-  "
-  style="
-    background:#4338ca;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:10px;
-    cursor:pointer;
-  ">
-
-  Download PDF
-
-</button>
-
-    </div>
-
-  `;
-
-}
-function downloadPDF(
-  name,
-  basicSalary,
-  hra,
-  bonus,
-  deduction,
-  netSalary
-){
-
-  const { jsPDF } = window.jspdf;
-
-  const doc = new jsPDF();
-
-  doc.setFontSize(22);
-
-  doc.text(
-    "Employee Payslip",
-    20,
-    20
-  );
-
-  doc.setFontSize(14);
-
-  doc.text(
-    `Employee Name: ${name}`,
-    20,
-    40
-  );
-
-  doc.text(
-    `Basic Salary: ₹${basicSalary}`,
-    20,
-    55
-  );
-
-  doc.text(
-    `HRA (20%): ₹${hra}`,
-    20,
-    70
-  );
-
-  doc.text(
-    `Bonus: ₹${bonus}`,
-    20,
-    85
-  );
-
-  doc.text(
-    `Deduction: ₹${deduction}`,
-    20,
-    100
-  );
-
-  doc.setFontSize(18);
-
-  doc.text(
-    `Net Salary: ₹${netSalary}`,
-    20,
-    125
-  );
-
-  doc.save(
-    `${name}_Payslip.pdf`
-  );
 
 }
 
 // ================= ATTENDANCE =================
 
-function showAttendance() {
+function showAttendance(){
 
   contentArea.innerHTML = `
 
-    <h1 style="margin-bottom:20px;">
-      Attendance Module
-    </h1>
+    <div class="table-section">
 
-    <div class="cards">
-
-      <div class="card">
-        <h3>Present</h3>
-        <h1>108</h1>
-      </div>
-
-      <div class="card">
-        <h3>Absent</h3>
-        <h1>12</h1>
-      </div>
-
-      <div class="card">
-        <h3>Leave</h3>
-        <h1>05</h1>
-      </div>
+      <h1>Attendance Module</h1>
 
     </div>
 
   `;
 
 }
-
 
 // ================= LEAVES =================
 
-function showLeaves() {
+function showLeaves(){
 
   contentArea.innerHTML = `
 
-    <h1 style="margin-bottom:20px;">
-      Leave Management
-    </h1>
-
     <div class="table-section">
 
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th>Name</th>
-            <th>Leave Type</th>
-            <th>Status</th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          <tr>
-            <td>Rahul Sharma</td>
-            <td>Sick Leave</td>
-            <td>Approved</td>
-          </tr>
-
-          <tr>
-            <td>Sneha Patil</td>
-            <td>Casual Leave</td>
-            <td>Pending</td>
-          </tr>
-
-        </tbody>
-
-      </table>
+      <h1>Leave Management</h1>
 
     </div>
 
   `;
 
 }
-
 
 // ================= REPORTS =================
 
-function showReports() {
+function showReports(){
 
   contentArea.innerHTML = `
-
-    <h1 style="margin-bottom:20px;">
-      Reports
-    </h1>
-
-    <div class="cards">
-
-      <div class="card">
-        <h3>Monthly Report</h3>
-        <h1>Available</h1>
-      </div>
-
-      <div class="card">
-        <h3>Payroll Report</h3>
-        <h1>Generated</h1>
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-// ================= SETTINGS =================
-
-function showSettings() {
-
-  contentArea.innerHTML = `
-
-    <h1 style="margin-bottom:20px;">
-      Settings
-    </h1>
 
     <div class="table-section">
 
-      <h3>Admin Settings</h3>
-
-      <br>
-
-      <label>Company Name</label>
-
-      <br><br>
-
-      <input
-        type="text"
-        value="PayManage Pvt Ltd"
-        class="settings-input">
-
-      <br><br>
-
-      <button style="
-        background:#4338ca;
-        color:white;
-        border:none;
-        padding:12px 20px;
-        border-radius:10px;
-        cursor:pointer;
-      ">
-
-        Save Settings
-
-      </button>
+      <h1>Reports</h1>
 
     </div>
 
   `;
 
 }
-function logout(){
 
-  sessionStorage.removeItem("loggedIn");
+// ================= SETTINGS =================
 
-  window.location.href = "login.html";
+function showSettings(){
+
+  contentArea.innerHTML = `
+
+    <div class="table-section">
+
+      <h1>Settings</h1>
+
+    </div>
+
+  `;
 
 }
+
+// ================= LOGOUT =================
+
+function logout(){
+
+  sessionStorage.removeItem(
+    "loggedIn"
+  );
+
+  window.location.href =
+    "login.html";
+
+}
+
+// ================= THEME =================
+
 function toggleTheme(){
 
-  document.body.classList.toggle("dark-mode");
+  document.body.classList.toggle(
+    "dark-mode"
+  );
 
   if(
     document.body.classList.contains(
@@ -1158,8 +835,7 @@ function toggleTheme(){
 
 }
 
-
-/* Load Saved Theme */
+// ================= LOAD THEME =================
 
 if(
   localStorage.getItem("theme")
@@ -1171,38 +847,8 @@ if(
   );
 
 }
-function toggleTheme(){
 
-  document.body.classList.toggle(
-    "dark-mode"
-  );
-
-}
-function updateDateTime(){
-
-  const now = new Date();
-
-  const dateTime =
-    now.toLocaleString();
-
-  const dateElement =
-    document.getElementById(
-      "liveDateTime"
-    );
-
-  if(dateElement){
-
-    dateElement.innerText =
-      dateTime;
-
-  }
-
-}
-
-setInterval(
-  updateDateTime,
-  1000
-);
+// ================= ACTIVE MENU =================
 
 function setActive(element){
 
@@ -1211,7 +857,7 @@ function setActive(element){
       ".sidebar ul li"
     );
 
-  items.forEach(item => {
+  items.forEach(item=>{
 
     item.classList.remove(
       "active-menu"
@@ -1224,3 +870,7 @@ function setActive(element){
   );
 
 }
+
+// ================= DEFAULT PAGE =================
+
+showDashboard();

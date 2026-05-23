@@ -915,9 +915,199 @@ function showLeaves(){
 
   contentArea.innerHTML = `
 
+    <div class="header">
+
+      <div>
+
+        <h1>
+          Leave Management
+        </h1>
+
+        <p>
+          Manage Employee Leave Requests
+        </p>
+
+      </div>
+
+      <button
+        class="theme-btn">
+
+        Apply Leave
+
+      </button>
+
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <h3>Total Requests</h3>
+
+        <h1>24</h1>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Approved</h3>
+
+        <h1>18</h1>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Pending</h3>
+
+        <h1>04</h1>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Rejected</h3>
+
+        <h1>02</h1>
+
+      </div>
+
+    </div>
+
     <div class="table-section">
 
-      <h1>Leave Management</h1>
+      <div class="table-header">
+
+        <h2>
+          Leave Requests
+        </h2>
+
+      </div>
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Employee</th>
+            <th>Leave Type</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Status</th>
+            <th>Action</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr>
+
+            <td>Rahul Sharma</td>
+
+            <td>Sick Leave</td>
+
+            <td>24 May</td>
+
+            <td>26 May</td>
+
+            <td>
+
+              <span class="status pending">
+
+                Pending
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <button class="approve-btn">
+
+                Approve
+
+              </button>
+
+              <button class="reject-btn">
+
+                Reject
+
+              </button>
+
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td>Sneha Patil</td>
+
+            <td>Casual Leave</td>
+
+            <td>28 May</td>
+
+            <td>29 May</td>
+
+            <td>
+
+              <span class="status active">
+
+                Approved
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <button class="approve-btn">
+
+                Approved
+
+              </button>
+
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td>Amit Joshi</td>
+
+            <td>Emergency Leave</td>
+
+            <td>30 May</td>
+
+            <td>31 May</td>
+
+            <td>
+
+              <span class="status rejected">
+
+                Rejected
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <button class="reject-btn">
+
+                Rejected
+
+              </button>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
 
     </div>
 
@@ -931,16 +1121,95 @@ function showReports(){
 
   contentArea.innerHTML = `
 
-    <div class="table-section">
+    <div class="header">
 
-      <h1>Reports</h1>
+      <div>
+
+        <h1>
+          Reports & Analytics
+        </h1>
+
+        <p>
+          Employee and Payroll Insights
+        </p>
+
+      </div>
+
+      <button
+        class="theme-btn"
+        onclick="downloadReport()">
+
+        Download Report
+
+      </button>
+
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <h3>Total Employees</h3>
+
+        <h1>${employees.length}</h1>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Monthly Payroll</h3>
+
+        <h1>₹12.5L</h1>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Attendance Rate</h3>
+
+        <h1>92%</h1>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Leaves Taken</h3>
+
+        <h1>18</h1>
+
+      </div>
+
+    </div>
+
+    <div class="charts-container">
+
+      <div class="chart-card">
+
+        <h2>
+          Employee Performance
+        </h2>
+
+        <canvas id="reportChart"></canvas>
+
+      </div>
+
+      <div class="chart-card">
+
+        <h2>
+          Department Distribution
+        </h2>
+
+        <canvas id="departmentChart"></canvas>
+
+      </div>
 
     </div>
 
   `;
 
-}
+  loadReportCharts();
 
+}
 // ================= SETTINGS =================
 
 function showSettings(){

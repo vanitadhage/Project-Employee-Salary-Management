@@ -48,7 +48,7 @@ body{
 
 }
 
-/* Logo */
+/* Logo 
 
 .sidebar h2{
 
@@ -127,7 +127,7 @@ body{
   height:100vh;
 }
 
-/* Header */
+/* Header 
 
 .header{
   display:flex;
@@ -154,7 +154,7 @@ body{
   border-radius:10px;
   outline:none;
   background:white;
-}
+}*/
 
 /* Cards */
 
@@ -329,13 +329,13 @@ table td{
 
 }
 
-/* Top Actions */
+/* Top Actions 
 
 .top-actions{
   display:flex;
   align-items:center;
   gap:10px;
-}
+}*/
 
 /* Logout Button */
 
@@ -576,8 +576,164 @@ body{
   background:#312e81;
 
 }
-.active-menu{
 
-  background:#4338ca;
+/* Header */
+
+.header{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:35px;
+
+  gap:20px;
+
+  flex-wrap:wrap;
+
+}
+
+/* Header Right Side */
+
+.top-actions{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:15px;
+
+  flex-wrap:wrap;
+
+}
+
+/* Search Box */
+
+.top-actions input{
+
+  width:280px;
+
+  padding:12px 15px;
+
+  border:none;
+
+  border-radius:12px;
+
+  outline:none;
+
+  background:white;
+
+  box-shadow:
+    0 2px 10px rgba(0,0,0,0.08);
+
+}
+
+/* Notification */
+
+.notification-btn{
+
+  width:45px;
+  height:45px;
+
+  border:none;
+
+  border-radius:12px;
+
+  background:white;
+
+  cursor:pointer;
+
+  font-size:18px;
+
+  box-shadow:
+    0 2px 10px rgba(0,0,0,0.08);
+
+}
+
+/* Profile */
+
+.profile-box{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  background:white;
+
+  padding:8px 15px;
+
+  border-radius:14px;
+
+  box-shadow:
+    0 2px 10px rgba(0,0,0,0.08);
+
+}
+
+/* Profile Image */
+
+.profile-img{
+
+  width:50px;
+  height:50px;
+
+  border-radius:50%;
+
+  object-fit:cover;
+
+}
+
+/* Theme Button */
+
+.theme-btn{
+
+  padding:12px 18px;
+
+  background:#111827;
+
+  color:white;
+
+  border:none;
+
+  border-radius:12px;
+
+  cursor:pointer;
+
+  transition:0.3s;
+
+}
+
+.theme-btn:hover{
+
+  transform:translateY(-2px);
+
+}
+
+/* Logout Button */
+
+.logout-btn{
+
+  padding:12px 18px;
+
+  background:#ef4444;
+
+  color:white;
+
+  border:none;
+
+  border-radius:12px;
+
+  cursor:pointer;
+
+  transition:0.3s;
+
+}
+
+.logout-btn:hover{
+
+  transform:translateY(-2px);
 
 }

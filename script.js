@@ -706,19 +706,91 @@ function editEmployee(index){
 
 // ================= PAYROLL =================
 
-function showPayroll(){
+// ================= PAYROLL =================
+
+function showPayroll() {
 
   contentArea.innerHTML = `
 
     <div class="table-section">
 
-      <h1>Payroll Module</h1>
+      <div class="table-header">
 
-      <br>
+        <div>
 
-      <p>
-        Payroll Management Working Successfully
-      </p>
+          <h2>Payroll Management</h2>
+
+          <p style="color:gray;">
+            Generate Employee Payslip
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="payroll-container">
+
+        <div class="payroll-form">
+
+          <label>Employee Name</label>
+
+          <input
+            type="text"
+            id="empName"
+            class="settings-input"
+            placeholder="Enter Employee Name">
+
+          <label>Basic Salary</label>
+
+          <input
+            type="number"
+            id="basicSalary"
+            class="settings-input"
+            placeholder="Enter Basic Salary">
+
+          <label>Bonus</label>
+
+          <input
+            type="number"
+            id="bonus"
+            class="settings-input"
+            placeholder="Enter Bonus">
+
+          <label>Deductions</label>
+
+          <input
+            type="number"
+            id="deduction"
+            class="settings-input"
+            placeholder="Enter Deduction">
+
+          <button
+            onclick="generatePayslip()"
+            class="save-btn">
+
+            Generate Payslip
+
+          </button>
+
+        </div>
+
+        <div
+          id="payslipResult"
+          class="payroll-result">
+
+          <div class="empty-box">
+
+            <h3>No Payslip Generated</h3>
+
+            <p>
+              Fill employee details and click Generate.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
 
@@ -1333,20 +1405,95 @@ function downloadReport(){
 }
 // ================= SETTINGS =================
 
-function showSettings(){
+// ================= SETTINGS =================
+
+function showSettings() {
 
   contentArea.innerHTML = `
 
     <div class="table-section">
 
-      <h1>Settings</h1>
+      <div class="table-header">
+
+        <div>
+
+          <h2>Settings</h2>
+
+          <p style="color:gray;">
+            Manage Application Settings
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="settings-grid">
+
+        <div class="card">
+
+          <h3>Company Settings</h3>
+
+          <br>
+
+          <label>Company Name</label>
+
+          <br><br>
+
+          <input
+            type="text"
+            value="PayManage Pvt Ltd"
+            class="settings-input">
+
+          <br><br>
+
+          <label>Admin Email</label>
+
+          <br><br>
+
+          <input
+            type="email"
+            value="admin@gmail.com"
+            class="settings-input">
+
+          <br><br>
+
+          <button class="save-btn">
+
+            Save Settings
+
+          </button>
+
+        </div>
+
+        <div class="card">
+
+          <h3>System Information</h3>
+
+          <br>
+
+          <p><strong>Version:</strong> 1.0.0</p>
+
+          <br>
+
+          <p><strong>Developed By:</strong> Admin</p>
+
+          <br>
+
+          <p><strong>Last Update:</strong> May 2026</p>
+
+          <br>
+
+          <p><strong>Status:</strong> Active</p>
+
+        </div>
+
+      </div>
 
     </div>
 
   `;
 
 }
-
 // ================= LOGOUT =================
 
 function logout(){

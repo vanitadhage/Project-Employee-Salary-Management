@@ -434,3 +434,73 @@ table td{
   }
 
 }
+/* Attendance Status */
+
+.status{
+
+  padding:8px 14px;
+
+  border-radius:20px;
+
+  color:white;
+
+  font-size:14px;
+
+  font-weight:bold;
+
+}
+
+.active{
+
+  background:#22c55e;
+
+}
+
+.pending{
+
+  background:#ef4444;
+
+}
+/* Leave Buttons */
+
+.approve-btn{
+
+  background:#22c55e;
+
+  color:white;
+
+  border:none;
+
+  padding:8px 14px;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+  margin-right:8px;
+
+}
+
+.reject-btn{
+
+  background:#ef4444;
+
+  color:white;
+
+  border:none;
+
+  padding:8px 14px;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+}
+
+/* Rejected Status */
+
+.rejected{
+
+  background:#ef4444;
+
+}

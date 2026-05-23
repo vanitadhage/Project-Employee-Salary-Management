@@ -732,9 +732,176 @@ function showAttendance(){
 
   contentArea.innerHTML = `
 
+    <div class="header">
+
+      <div>
+
+        <h1>
+          Attendance Management
+        </h1>
+
+        <p>
+          Track Employee Attendance
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <h3>Present</h3>
+
+        <h1>108</h1>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Absent</h3>
+
+        <h1>12</h1>
+
+      </div>
+
+      <div class="card">
+
+        <h3>On Leave</h3>
+
+        <h1>05</h1>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Attendance %</h3>
+
+        <h1>92%</h1>
+
+      </div>
+
+    </div>
+
     <div class="table-section">
 
-      <h1>Attendance Module</h1>
+      <div class="table-header">
+
+        <h2>Employee Attendance</h2>
+
+      </div>
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Employee</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          <tr>
+
+            <td>Rahul Sharma</td>
+
+            <td>
+              ${new Date().toLocaleDateString()}
+            </td>
+
+            <td>
+
+              <span class="status active">
+
+                Present
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <button class="edit-btn">
+
+                Mark Absent
+
+              </button>
+
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td>Sneha Patil</td>
+
+            <td>
+              ${new Date().toLocaleDateString()}
+            </td>
+
+            <td>
+
+              <span class="status pending">
+
+                Absent
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <button class="edit-btn">
+
+                Mark Present
+
+              </button>
+
+            </td>
+
+          </tr>
+
+          <tr>
+
+            <td>Amit Joshi</td>
+
+            <td>
+              ${new Date().toLocaleDateString()}
+            </td>
+
+            <td>
+
+              <span class="status active">
+
+                Present
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <button class="edit-btn">
+
+                Mark Absent
+
+              </button>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
 
     </div>
 
